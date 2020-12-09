@@ -1,0 +1,37 @@
+<!-- Heredamos todo lo que van a tener en común todos nuestros templates -->
+{% extends "base.html" %}
+<!-- Cargamos nuestros archivos estáticos que se encuentran en la carpeta 'statics' -->
+{% load  static %}
+<!-- Title -->
+{% block title %}
+    Register SSH User
+{% endblock title %}
+
+{% block content %}
+    {% include "includes/header.html" %}
+    <div class="grid-container">
+        <div class="grid-x">
+            <h3 class="cell" style="margin-top: 24px; text-align: center;"> Register New SSH User </h3>
+            <form class="cell grid-x grid-margin-x align-center" method="POST"> {% csrf_token %}
+                <div class="cell large-8">
+                    <label> SSH Username:
+                        {{ form.username }}
+                    </label>
+                </div>
+                <div class="cell large-8">
+                    <label> SSH Password:
+                      {{ form.password }}
+                    </label>
+                </div>
+                <div class="cell large-8">
+                    <label> Router:
+                      {{ form.router }}
+                    </label>
+                </div>
+                <div class="cell" style="text-align: center;">
+                    <button type="submit" class="button" style="width: 132px;"> Register </button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

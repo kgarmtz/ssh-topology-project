@@ -1,0 +1,84 @@
+<!-- Heredamos todo lo que van a tener en común todos nuestros templates -->
+{% extends "base.html" %}
+<!-- Cargamos nuestros archivos estáticos que se encuentran en la carpeta 'statics' -->
+{% load  static %}
+<!-- Title -->
+{% block title %}
+    List Interfaces
+{% endblock title %}
+
+{% block content %}
+    {% include "includes/header.html" %}
+    <!-- Content -->
+    <div class="grid-container">
+        <!-- Creamos un lienzo de Foundation: 12 columnas por sección -->
+        <div class="grid-x">
+            <div class="cell grid-x">
+              <h3 class="cell large-3 "style="margin-top: 24px;"> Interfaces List </h3>
+              <a class="cell large-2 button success" href="#" style="margin-top: 24px; color: white;" > Register New </a>
+            </div>
+            <div class="cell">
+                <table>
+                    <thead style="background: #81BDA4; color:azure">
+                      <tr>
+                        <th style="text-align: center;"> INTERFACE NAME </th>
+                        <th style="text-align: center;"> IP             </th>
+                        <th style="text-align: center;"> MASK           </th>
+                        <th style="text-align: center;"> ROUTER         </th>
+                        <th style="text-align: center;"> ACTION         </th>
+                      </tr>
+                    </thead>
+                    <tbody style="text-align: center;">
+                     {% for interface in interfaces  %}      
+                      <tr>
+                          <td> {{ interface.name }}   </td>
+                          <td> {{ interface.ip }}     </td>
+                          <td> {{ interface.mask }}   </td>
+                          <td> {{ interface.router }} </td>
+                          <td> 
+                            <a class="button" href="{% url 'network_app:update_interface' interface.id %}" > Update </a>
+                          </td>
+                      </tr>
+                     {% endfor %}    
+                    </tbody>
+                  </table>
+            </div>
+            <!-- Pagination Block -->
+            <div class="cell">
+                <!-- If there's pagination available -->
+                {% if is_paginated %}
+                <nav aria-label="Pagination">
+                    <ul class="pagination text-center">
+                     <!-- El objeto que es la página actual es page_obj.number-->
+                     <!-- Si el bloque de paginación contiene páginas anteriores -->
+                      {% if page_obj.has_previous %}
+                      <li class="pagination-previous"> 
+                        <a href="?page={{page_obj.previous_page_number}}" aria-label="Prev page"> Previous </a>
+                      </li> 
+                      {% endif %}
+                    <!-- Obtenemos el arreglo de páginas que contiene el objeto paginator (es el obj 
+                        que manda el ListView)-->
+                      {% for page in paginator.page_range  %}
+                        <!-- Validamos si nos encontramos en la página actual-->
+                        {% ifequal page page_obj.number %} 
+                        <!-- Resaltamos la página actual -->
+                        <li class="current"><span class="show-for-sr"> You're on page </span>{{page}}</li>
+                        <!-- En caso de no encontrarnos en la página actual, simplemente no resaltamos el número de página -->
+                        {% else %}
+                        <li><a href="?page={{page}}" aria-label="Page"> {{page}} </a></li>
+                        {% endifequal %}
+                      {% endfor %}
+                      <!-- Si el bloque de paginación contiene páginas siguientes -->
+                      {% if page_obj.has_next %}
+                      <li class="pagination-next">
+                          <a href="?page={{page_obj.next_page_number}}" aria-label="Next page">Next</a>
+                      </li>
+                      {% endif %}
+                    </ul>
+                  </nav>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+{% endblock content %}
+    

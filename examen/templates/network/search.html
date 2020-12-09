@@ -1,0 +1,14 @@
+<!-- Heredamos todo lo que van a tener en común todos nuestros templates -->
+{% extends "base.html" %}
+<!-- Cargamos nuestros archivos estáticos que se encuentran en la carpeta 'statics' -->
+{% load  static %}
+
+{% block content %}
+    {% include "includes/header.html" %}
+    <form method="POST"> {% csrf_token %}
+        <div style="text-align: center; margin-top: 24px;">
+            <h4> Validation: {{form.valid}} </h4>
+            <button type="submit" class="button" style="width: 140px;"> Search Topology </button>
+        </div>
+    </form>
+{% endblock content %}

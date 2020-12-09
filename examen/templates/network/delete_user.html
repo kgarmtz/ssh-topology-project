@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+<!-- Title -->
+{% block title %}
+    Delete SSH User
+{% endblock title %}
+<!-- Body -->
+{% block content %}
+    <!-- Header -->
+    {% include 'includes/header.html' %}
+    <!-- Content -->
+    <div class="grid-container">
+        <div class="grid-x" style="margin-top: 24px;">
+           <!-- 'object' hace referencia al registro de la BD especificado en la URL por el pk--> 
+            <h3 class="cell"> Delete SSH User: {{ object.username }} </h3>
+            <form class="cell" method="POST"> {% csrf_token %}
+                <div class="callout alert grid-x grid-padding-x">
+                    <h5 class="cell large-6"> Do you want to delete this ssh user? </h5>
+                    <button type="submit" class="alert button cell large-2"> Delete </button>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock content %}

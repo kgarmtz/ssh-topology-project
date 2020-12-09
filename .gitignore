@@ -1,0 +1,3 @@
+# git ignore
+examen/secret.json
+examen/applications/network/migrations/*

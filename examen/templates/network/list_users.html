@@ -1,0 +1,45 @@
+<!-- Heredamos todo lo que van a tener en común todos nuestros templates -->
+{% extends "base.html" %}
+<!-- Cargamos nuestros archivos estáticos que se encuentran en la carpeta 'statics' -->
+{% load  static %}
+<!-- Title -->
+{% block title %}
+    List SSH Users
+{% endblock title %}
+
+{% block content %}
+    {% include "includes/header.html" %}
+    <!-- Content -->
+    <div class="grid-container">
+        <!-- Creamos un lienzo de Foundation: 12 columnas por sección -->
+        <div class="grid-x">
+            <div class="cell grid-x">
+              <h3 class="cell large-3 " style="margin-top: 24px;"> SSH Users List </h3>
+              <a class="cell large-2 button success" href="{% url 'network_app:add_user' %}" style="margin-top: 24px; color: white;" > Register New </a>
+            </div>
+            <div class="cell">
+                <table>
+                    <thead style="background: #81BDA4; color:azure">
+                      <tr>
+                        <th style="text-align: center;"> USER NAME        </th>
+                        <th style="text-align: center;"> ROUTER           </th>
+                        <th style="text-align: center;"> ACTION           </th>
+                      </tr>
+                    </thead>
+                    <tbody style="text-align: center;">
+                     {% for sshuser in sshusers  %}      
+                      <tr>
+                          <td> {{ sshuser.username }} </td>
+                          <td> {{ sshuser.router }}    </td>
+                          <td> 
+                            <a class="button" href="{% url 'network_app:update_user' sshuser.id %}" >       Update </a>
+                            <a class="button alert" href="{% url 'network_app:delete_user' sshuser.id %}" > Delete </a>
+                          </td>
+                      </tr>
+                     {% endfor %}    
+                    </tbody>
+                  </table>
+            </div>
+        </div>
+    </div>    
+{% endblock content %}

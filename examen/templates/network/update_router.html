@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+<!-- Cargamos los archivos estáticos -->
+{% load static %}
+<!-- Title -->
+{% block title %}
+    Update Router
+{% endblock title %}
+<!-- Body -->
+{% block content %}
+    <!-- Header -->
+    {% include 'includes/header.html' %}
+    <!-- Content -->
+    <div class="grid-container">
+        <div class="grid-x">
+            <h3 class="cell" style="margin-top: 24px;"> Update Router Information </h3>
+            <div class="cell">
+                <form class="grid-x grid-padding-x" method="POST">{% csrf_token %}
+                    <div class="cell large-6">
+                        <label> Router ID:
+                          {{ form.ip }}
+                        </label>
+                    </div>
+                    <div class="cell large-6">
+                        <label> Hostname:
+                          {{ form.host_name }}
+                        </label>
+                    </div>
+                    <div class="cell large-6">
+                        <label> Brand:
+                          {{ form.brand }}
+                        </label>
+                    </div>
+                    <div class="cell large-6">
+                        <label> Operative System :
+                          {{ form.os }}
+                        </label>
+                    </div>
+                    <div class="cell large-6">
+                        <label> Interfaces ON:
+                          {{ form.interfaces_on }}
+                        </label>
+                    </div>
+                    <div class="cell large-offset-10">
+                        <button type="submit" class="button" style="width: 132px;"> Update </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

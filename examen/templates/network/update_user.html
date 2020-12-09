@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+<!-- Cargamos los archivos estáticos -->
+{% load static %}
+<!-- Title -->
+{% block title %}
+    Update SSH User
+{% endblock title %}
+<!-- Body -->
+{% block content %}
+    <!-- Header -->
+    {% include 'includes/header.html' %}
+    <!-- Content -->
+    <div class="grid-container">
+        <div class="grid-x">
+            <h3 class="cell" style="margin-top: 24px;"> Update SSH User Information </h3>
+            <div class="cell">
+                <form class="grid-x grid-padding-x" method="POST">{% csrf_token %}
+                    <div class="cell large-6">
+                        <label> SSH Username:
+                            {{ form.username }}
+                        </label>
+                    </div>
+                    <div class="cell large-6">
+                        <label> SSH Password:
+                            {{ form.password }}
+                        </label>
+                    </div>
+                    <div class="cell large-6">
+                        <label> Router:
+                          {{ form.router }}
+                        </label>
+                    </div>
+                    <div class="cell large-offset-10">
+                        <button type="submit" class="button" style="width: 132px;"> Update </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+{% endblock content %}
