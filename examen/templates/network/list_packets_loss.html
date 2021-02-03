@@ -1,0 +1,75 @@
+<!-- Heredamos todo lo que van a tener en común todos nuestros templates -->
+{% extends "base.html" %}
+<!-- Cargamos nuestros archivos estáticos que se encuentran en la carpeta 'statics' -->
+{% load  static %}
+<!-- Title -->
+{% block title %}
+    List Packets Loss
+{% endblock title %}
+
+{% block content %}
+    {% include "includes/header.html" %}
+    <div class="grid-container">
+        <div class="grid-x grid-margin-x align-center">
+            <h3 class="cell" style="margin-top: 24px; text-align: center;"> Packets Loss Tracking </h3>
+            {% for router, inPA, outPA  in routers  %}
+            <div class="card cell large-4" style="width: 300px;">
+                <div class="card-divider label alert">
+                    <h4 class="cell" style="text-align: center;" > {{ router.name }} </h4>
+                </div>
+
+                <div class="card-section">
+                    <p style="font-weight: bold;"> Paquetes de Entrada: </p>
+                    <p> {{ inPA }} </p> 
+                    <p style="font-weight: bold;"> Paquetes de Salida: </p>   
+                    <p> {{ outPA }} </p> 
+                </div>
+            </div>
+            {% endfor %}
+            <div class="cell grid-x">
+                <p class="cell large-4 large-offset-2"> Umbral R4 -> R6 : <span style="font-weight: bold;"> {{ umbral_1 }} </span> - 100% </p>
+                <p class="cell large-4"> Umbral R6 -> R4 : <span style="font-weight: bold;"> {{ umbral_2 }} </span> - 100% </p>
+            </div>
+
+            <div class="cell grid-x">
+                <p class="cell large-4 large-offset-2"> Número de Paquetes Perdidos: <span style="font-weight: bold;"> {{ difference_4 }} </span> </p>
+                <p class="cell large-4"> Número de Paquetes Perdidos:  <span style="font-weight: bold;"> {{ difference_6 }} </span> </p>
+            </div>
+
+            <div class="cell grid-x">
+                <p class="cell large-4 large-offset-2"> Porcentaje de pérdida de paquetes: <span style="font-weight: bold;"> {{ percentage_4|floatformat }}%</span> </p>
+                <p class="cell large-5"> Porcentaje de pérdida de páquetes:  <span style="font-weight: bold;"> {{ percentage_6|floatformat }}%</span> </p>
+            </div>
+            
+            {% if percentage_4 >= 2  %}
+                <div class="callout alert">
+                    <h5> La pérdida de paquetes ha superado el umbral del 2% </h5>
+                    <p> Revise el enlace del Router 4 con el Router 6 </p>
+                </div>
+            {% else %}
+                <div class="callout success">
+                    <h5> La pérdida de paquetes no ha superado el umbral del 2% </h5>
+                    <p> Enlace entre Routers Estable </p>
+                </div>
+
+            {% endif %}
+
+            {% if percentage_6 >= 2 %}
+                <div class="callout alert">
+                    <h5> La pérdida de paquetes ha superado el umbral del 2% </h5>
+                    <p> Revise el enlace del Router 6 con el Router 4 </p>
+                </div>
+            
+            {% else %}
+                <div class="callout success">
+                    <h5> La pérdida de paquetes no ha superado el umbral del 2% </h5>
+                    <p> Enlace entre Routers Estable </p>
+                </div> 
+            
+            {% endif %}
+            
+                
+        </div>
+    </div>
+
+{% endblock content %}

@@ -38,6 +38,8 @@ LOCAL_APPS = (
 
 # Todas las aplicaciones de terceros se agregarán aquí
 THIRD_PARTY_APPS = (
+    # Django_Cleanup for deleting media files after deleting an instance
+    'django_cleanup.apps.CleanupConfig',
 )
 
 INSTALLED_APPS = DJANGO_APPS + LOCAL_APPS + THIRD_PARTY_APPS
@@ -95,7 +97,7 @@ AUTH_PASSWORD_VALIDATORS = [
 # Internationalization
 # https://docs.djangoproject.com/en/2.2/topics/i18n/
 
-LANGUAGE_CODE = 'en-us'
+LANGUAGE_CODE = 'es-mx'
 
 TIME_ZONE = 'UTC'
 
@@ -104,3 +106,4 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+

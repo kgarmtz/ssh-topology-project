@@ -25,6 +25,31 @@ class Router(models.Model):
 
     interfaces_on = models.PositiveIntegerField(null = True)
 
+    # SNMP Fields
+    sysName = models.CharField(
+        'System Name', 
+        max_length = 100, 
+        blank = True
+    )
+
+    sysLocation = models.CharField(
+        'System Location', 
+        max_length=50, 
+        blank = True
+    )
+
+    sysContact  = models.CharField(
+        'System Contact', 
+        max_length=50, 
+        blank = True
+    )
+
+    sysDescr = models.CharField(
+        'System Description', 
+        max_length = 300, 
+        blank = True
+    )  
+    
     def __str__(self):
         return self.host_name
 
@@ -50,9 +75,55 @@ class Interface(models.Model):
         'Router',
         max_length = 50
     )
+    
+    # SNMP Fields
+    oid = models.CharField(
+        'OID Identifier', 
+        max_length = 1,
+        blank = True
+    )
+
+    in_oct = models.CharField(
+        'Octetos de Entrada', 
+        max_length = 300,
+        blank = True
+    )
+
+    in_uPackets = models.CharField(
+        'Paquetes de Entrada', 
+        max_length = 300,
+        blank = True
+    )
+
+    out_oct = models.CharField(
+        'Octetos de Salida', 
+        max_length = 300,
+        blank = True
+    )
+
+    out_uPackets = models.CharField(
+        'Paquetes de Salida', 
+        max_length = 300,
+        blank = True
+    )
+
+    times = models.CharField(
+        'Time of Last Modification', 
+        max_length = 500,
+        blank = True
+    )
+
+    image = models.ImageField(
+        'Image', 
+        upload_to ='Interfaces', 
+        blank = True
+    )
+
+    class Meta:
+        ordering = ['id']
 
     def __str__(self):
-        return self.router+' - '+self.name
+        return str(self.id) + '. ' + self.router+' - '+self.name
 
 class SSHUser(models.Model):
     """ SSH User Model """

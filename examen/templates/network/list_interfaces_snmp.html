@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% load  static %}
+
+{% block content %}
+    {% include "includes/header.html" %}
+    <div class="grid-container" style="margin-top: 24px;">
+        <!-- Creamos un lienzo de foundation 12 columnas, con separación entre los elementos
+        creados del grid-container -->
+        <div class="grid-x grid-margin-x">
+            <form method="post" class="cell grid-x" style="margin-bottom: 20px;"> {% csrf_token %}
+                <h3 class="cell large-6 large-offset-2" style="text-align: center;" > SNMP Interfaces Information: </h3>
+                <button type="submit" class="cell large-2 button alert"> Reload </button>
+            </form>
+            
+            {% for name, inOC, inPA, outOC, outPA, imageUrl, id in interfaces  %}
+                <div class="card cell large-4" style="width: 300px;">
+                    <div class="card-divider label alert">
+                        <h4 class="cell" style="text-align: center;" > {{ name }} </h4>
+                    </div>
+                    <div class="card-section">
+                        <p style="font-weight: bold;"> Octetos de Entrada: </p>
+                        <p> {{ inOC }} </p>  
+                        <p style="font-weight: bold;"> Paquetes de Entrada: </p>
+                        <p> {{ inPA }} </p> 
+                        <p style="font-weight: bold;"> Octetos de Salida: </p> 
+                        <p> {{ outOC }} </p>
+                        <p style="font-weight: bold;"> Paquetes de Salida: </p>   
+                        <p> {{ outPA }} </p> 
+                        <div style="text-align: center;">
+                            <p><button class="button" data-open="modal{{id}}"> View </button></p>
+                        </div> 
+                    </div>
+
+                    <div class="reveal" id="modal{{id}}" data-reveal style="text-align: center;">
+                        <p class="lead"> Statistics Plot - {{ name }} </p>
+                        <img src="{{ imageUrl }}">
+                        <button class="close-button" data-close aria-label="Close modal" type="button">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}

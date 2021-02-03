@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% load  static %}
+
+{% block content %}
+    {% include "includes/header.html" %}
+    <div class="grid-container" style="margin-top: 24px;">
+        <!-- Creamos un lienzo de foundation 12 columnas, con separación entre los elementos
+        creados del grid-container -->
+        <div class="grid-x grid-margin-x"> 
+            <h3 class="cell" style="text-align: center;" > Router SNMP Information: </h3>
+            {% for router in routers  %}
+                <div class="card cell large-4" style="width: 300px;">
+                    <div class="card-divider label alert">
+                        <h4 class="cell" style="text-align: center;" > {{ router.host_name }} </h4>
+                    </div>
+                    <div class="card-section">
+                        <p style="font-weight: bold;"> sysName: </p>
+                        <p> {{ router.sysName }} </p>  
+                        <p style="font-weight: bold;"> sysLocation: </p>
+                        <p> {{ router.sysLocation }} </p> 
+                        <p style="font-weight: bold;"> sysContact: </p> 
+                        <p> {{ router.sysContact }} </p>
+                        <p style="font-weight: bold;"> sysDescription: </p>   
+                        <p style="text-align: justify;"> {{ router.sysDescr }} </p>
+                        <form method="post"  action="{% url 'network_app:update_router_snmp' router.id %}"> {% csrf_token %}
+                            <div style="text-align: center;">
+                                <button type="submit" class="button alert"> Reload </button>
+                            </div> 
+                        </form>
+                        
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock content %}
+    

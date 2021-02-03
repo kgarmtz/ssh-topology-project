@@ -2,98 +2,110 @@
 digraph {
 	node [fillcolor="blue:cyan" shape=doublecircle style=filled]
 	R1
+	node [fillcolor="red:pink" shape=box style=filled]
+	R1 -> "192.168.11.0" [label=LAN]
 	node [fillcolor="red:yellow" shape=box style=filled]
-	"148.204.56.0"
-	R1 -> "148.204.56.0" [label="Fa0/0
+	"192.168.11.0"
+	R1 -> "192.168.11.0" [label="Fa0/0
 .1/24"]
 	node [fillcolor="blue:cyan" shape=doublecircle style=filled]
 	R4
-	"148.204.56.0" -> R4
+	"192.168.11.0" -> R4
 	node [fillcolor="red:yellow" shape=box style=filled]
-	"8.8.8.16"
-	R1 -> "8.8.8.16" [label="Fa1/0
+	"192.168.1.16"
+	R1 -> "192.168.1.16" [label="Fa1/0
 .17/30"]
 	node [fillcolor="blue:cyan" shape=doublecircle style=filled]
 	R3
-	"8.8.8.16" -> R3
+	"192.168.1.16" -> R3
 	node [fillcolor="red:yellow" shape=box style=filled]
-	"8.8.8.12"
-	R1 -> "8.8.8.12" [label="Fa1/1
+	"192.168.1.12"
+	R1 -> "192.168.1.12" [label="Fa1/1
 .13/30"]
 	node [fillcolor="blue:cyan" shape=doublecircle style=filled]
 	R2
-	"8.8.8.12" -> R2
-	node [fillcolor="blue:cyan" shape=doublecircle style=filled]
-	R3
-	node [fillcolor="red:yellow" shape=box style=filled]
-	"8.8.8.16"
-	R3 -> "8.8.8.16" [label="Fa1/0
-.18/30"]
-	node [fillcolor="blue:cyan" shape=doublecircle style=filled]
-	R1
-	"8.8.8.16" -> R1
-	node [fillcolor="red:yellow" shape=box style=filled]
-	"8.8.8.8"
-	R3 -> "8.8.8.8" [label="Fa1/1
-.10/30"]
-	node [fillcolor="blue:cyan" shape=doublecircle style=filled]
-	R2
-	"8.8.8.8" -> R2
-	node [fillcolor="blue:cyan" shape=doublecircle style=filled]
-	R2
-	node [fillcolor="red:yellow" shape=box style=filled]
-	"8.8.8.12"
-	R2 -> "8.8.8.12" [label="Fa1/1
-.14/30"]
-	node [fillcolor="blue:cyan" shape=doublecircle style=filled]
-	R1
-	"8.8.8.12" -> R1
-	node [fillcolor="red:yellow" shape=box style=filled]
-	"8.8.8.8"
-	R2 -> "8.8.8.8" [label="Fa1/0
-.9/30"]
-	node [fillcolor="blue:cyan" shape=doublecircle style=filled]
-	R3
-	"8.8.8.8" -> R3
+	"192.168.1.12" -> R2
 	node [fillcolor="blue:cyan" shape=doublecircle style=filled]
 	R4
+	node [fillcolor="red:pink" shape=box style=filled]
+	R4 -> "192.168.11.0" [label=LAN]
 	node [fillcolor="red:yellow" shape=box style=filled]
-	"148.204.56.0"
-	R4 -> "148.204.56.0" [label="Fa0/0
+	"192.168.11.0"
+	R4 -> "192.168.11.0" [label="Fa0/0
 .2/24"]
 	node [fillcolor="blue:cyan" shape=doublecircle style=filled]
 	R1
-	"148.204.56.0" -> R1
+	"192.168.11.0" -> R1
 	node [fillcolor="red:yellow" shape=box style=filled]
-	"8.8.8.4"
-	R4 -> "8.8.8.4" [label="Fa1/0
+	"192.168.1.4"
+	R4 -> "192.168.1.4" [label="Fa1/0
 .5/30"]
 	node [fillcolor="blue:cyan" shape=doublecircle style=filled]
 	R5
-	"8.8.8.4" -> R5
+	"192.168.1.4" -> R5
 	node [fillcolor="red:yellow" shape=box style=filled]
-	"8.8.8.0"
-	R4 -> "8.8.8.0" [label="Fa1/1
+	"192.168.1.0"
+	R4 -> "192.168.1.0" [label="Fa1/1
 .1/30"]
 	node [fillcolor="blue:cyan" shape=doublecircle style=filled]
 	R6
-	"8.8.8.0" -> R6
+	"192.168.1.0" -> R6
+	node [fillcolor="blue:cyan" shape=doublecircle style=filled]
+	R3
+	node [fillcolor="red:pink" shape=box style=filled]
+	R3 -> "192.168.14.0" [label=LAN]
+	node [fillcolor="red:yellow" shape=box style=filled]
+	"192.168.1.16"
+	R3 -> "192.168.1.16" [label="Fa1/0
+.18/30"]
+	node [fillcolor="blue:cyan" shape=doublecircle style=filled]
+	R1
+	"192.168.1.16" -> R1
+	node [fillcolor="red:yellow" shape=box style=filled]
+	"192.168.1.8"
+	R3 -> "192.168.1.8" [label="Fa1/1
+.10/30"]
+	node [fillcolor="blue:cyan" shape=doublecircle style=filled]
+	R2
+	"192.168.1.8" -> R2
+	node [fillcolor="blue:cyan" shape=doublecircle style=filled]
+	R2
+	node [fillcolor="red:pink" shape=box style=filled]
+	R2 -> "192.168.15.0" [label=LAN]
+	node [fillcolor="red:yellow" shape=box style=filled]
+	"192.168.1.12"
+	R2 -> "192.168.1.12" [label="Fa1/1
+.14/30"]
+	node [fillcolor="blue:cyan" shape=doublecircle style=filled]
+	R1
+	"192.168.1.12" -> R1
+	node [fillcolor="red:yellow" shape=box style=filled]
+	"192.168.1.8"
+	R2 -> "192.168.1.8" [label="Fa1/0
+.9/30"]
+	node [fillcolor="blue:cyan" shape=doublecircle style=filled]
+	R3
+	"192.168.1.8" -> R3
 	node [fillcolor="blue:cyan" shape=doublecircle style=filled]
 	R6
+	node [fillcolor="red:pink" shape=box style=filled]
+	R6 -> "192.168.12.0" [label=LAN]
 	node [fillcolor="red:yellow" shape=box style=filled]
-	"8.8.8.0"
-	R6 -> "8.8.8.0" [label="Fa1/0
+	"192.168.1.0"
+	R6 -> "192.168.1.0" [label="Fa1/0
 .2/30"]
 	node [fillcolor="blue:cyan" shape=doublecircle style=filled]
 	R4
-	"8.8.8.0" -> R4
+	"192.168.1.0" -> R4
 	node [fillcolor="blue:cyan" shape=doublecircle style=filled]
 	R5
+	node [fillcolor="red:pink" shape=box style=filled]
+	R5 -> "192.168.13.0" [label=LAN]
 	node [fillcolor="red:yellow" shape=box style=filled]
-	"8.8.8.4"
-	R5 -> "8.8.8.4" [label="Fa1/0
+	"192.168.1.4"
+	R5 -> "192.168.1.4" [label="Fa1/0
 .6/30"]
 	node [fillcolor="blue:cyan" shape=doublecircle style=filled]
 	R4
-	"8.8.8.4" -> R4
+	"192.168.1.4" -> R4
 }

@@ -33,6 +33,22 @@ urlpatterns = [
          views.SSHUserListView.as_view(),
          name='users_network',
     ),
+    path(
+         'listRoutersSNMP/', 
+         views.SnmpListView.as_view(),
+         name='routers_snmp',
+    ),
+    path(
+         'listInterfacesSNMP/', 
+         views.SnmpInterfacesListView.as_view(),
+         name='interfaces_snmp',
+    ),
+
+    path(
+         'listPacketLoss/', 
+         views.InterfaceLossView.as_view(),
+         name='packets_loss',
+    ),
     # URLS para actualizar datos en la Base de Datos
     path(
         'updateRouter/<int:pk>/',
@@ -49,6 +65,13 @@ urlpatterns = [
         views.SSHUserUpdateView.as_view(),
         name='update_user'
     ),
+
+    path(
+        'updateRouterSNMP/<int:pk>', 
+        views.UpdateRouterSNMPView.as_view(),
+        name='update_router_snmp',
+    ),  
+
     # URLS para añadir nuevos registros en la Base de Datos
     path(
         'addUser/',

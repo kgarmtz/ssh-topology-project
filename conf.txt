@@ -1,0 +1,8 @@
+
+sudo ip address add 192.168.11.10/24 dev enp0s3 brd +
+sudo ip route add default via 192.168.11.1 dev enp0s3
+
+
+IF-MIB::ifDescr.1 = STRING: FastEthernet0/0
+IF-MIB::ifDescr.2 = STRING: FastEthernet1/0
+IF-MIB::ifDescr.3 = STRING: FastEthernet1/1
